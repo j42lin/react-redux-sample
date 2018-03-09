@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         submitTodo: (text) => {
             dispatch(submitTodo(text));
+            dispatch(changeTodoText(''));
         }
     };
 }
