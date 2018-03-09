@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
 import Todos from '../components/Todos';
-import { changeTodoText } from '../actions';
+import {
+    changeTodoText,
+    submitTodo,
+} from '../actions';
 
 const mapStateToProps = (state) => {
     return {
         todoText: state.todoText,
+        todos: state.todos,
     }
 };
   
@@ -13,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
         changeTodoText: (text) => {
             dispatch(changeTodoText(text));
         },
+        submitTodo: (text) => {
+            dispatch(submitTodo(text));
+        }
     };
 }
   
