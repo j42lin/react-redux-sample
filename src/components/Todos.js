@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Alert, Grid, FormGroup, FormControl } from 'react-bootstrap';
 
-const Todos = ({todoText, todos, changeTodoText, submitTodo}) => {
+const Todos = ({todoText, todos, changeTodoText, submitTodo, deleteTodo}) => {
   console.log('Todo Text', todoText);
   console.log('Todo list', todos);
   return (
@@ -20,6 +20,7 @@ const Todos = ({todoText, todos, changeTodoText, submitTodo}) => {
               return (
                 <Alert key={index}>
                   <p>{todo}</p>
+                  <Button bsStyle="danger" onClick={() => { deleteTodo(index); }}>Delete</Button>
                 </Alert>
               );
             })

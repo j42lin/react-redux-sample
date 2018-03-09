@@ -3,6 +3,7 @@ import Todos from '../components/Todos';
 import {
     changeTodoText,
     submitTodo,
+    deleteTodo,
 } from '../actions';
 
 const mapStateToProps = (state) => {
@@ -20,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
         submitTodo: (text) => {
             dispatch(submitTodo(text));
             dispatch(changeTodoText(''));
+        },
+        deleteTodo: (index) => {
+            dispatch(deleteTodo(index));
         }
     };
 }
