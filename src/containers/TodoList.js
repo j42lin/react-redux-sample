@@ -1,35 +1,26 @@
-import React, { Component } from 'react';
-import { Button, Alert, Grid, FormGroup, FormControl } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import Todos from '../components/Todos';
+import { changeTodoText } from '../actions';
 
-class TodoList extends Component {
-    constructor(props) {
-      super(props);
-  
-      this.state = {
-        todoText: '',
-      };
+const mapStateToProps = (state) => {
+    return {
+        todoText: state.todoText,
     }
+};
   
-    // This handle event when text is entered
-    handleNoteChange(value) {
-      console.log('text changed', value);
-      this.setState({todoText: value});
-    }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeTodoText: (text) => {
+            dispatch(changeTodoText(text));
+        },
+    };
+}
   
-    render() {
-      return (
-        <Grid>
-            <FormGroup controlId="formControlsTextarea">
-            <FormControl
-                componentClass="textarea"
-                value={this.state.todoText}
-                onChange={ (e) => { this.handleNoteChange(e.target.value); } }
-            />
-            </FormGroup>
-        </Grid>
-      );
-    }
-  }
+const TodoList = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Todos);
   
-  export default TodoList;
+
+export default TodoList;
   
