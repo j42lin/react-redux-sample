@@ -6,10 +6,11 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import { Provider } from 'react-redux'; // Bridge React and Redux
-import { createStore } from 'redux'; //  Main Redux library
+import { applyMiddleware, createStore, } from 'redux'; //  Main Redux library
+import logger from 'redux-logger';
 import reducers from './reducers'; //  List of Reducers we created 
 
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(logger));
 
 ReactDOM.render(
     <Provider store={store}>
